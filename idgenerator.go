@@ -14,7 +14,7 @@ import (
 	"github.com/speps/go-hashids"
 )
 
-const entityType = "IDGENERATOR"
+const entityType = "ID_GENERATOR"
 
 type IDGenerator struct {
 	dynamoClient dynamodbiface.ClientAPI

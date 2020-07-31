@@ -138,10 +138,10 @@ func TestIDGenerator_NextOKExistingCounter(t *testing.T) {
 		assert.Nil(t, err)
 		assert.Equal(t, "6l", nextID)
 		// check item in dynamo
-		atts := godynamodb.GetItem(t, svc, tableWithPK, map[string]string{"PK": "IDGENERATOR#UserFile"})
+		atts := godynamodb.GetItem(t, svc, tableWithPK, map[string]string{"PK": "ID_GENERATOR#UserFile"})
 		assert.NotEmpty(t, atts)
-		assert.Equal(t, "IDGENERATOR#UserFile", *atts["PK"].S)
-		assert.Equal(t, "IDGENERATOR", *atts["TYPE"].S)
+		assert.Equal(t, "ID_GENERATOR#UserFile", *atts["PK"].S)
+		assert.Equal(t, "ID_GENERATOR", *atts["TYPE"].S)
 		assert.Equal(t, "UserFile", *atts["name"].S)
 		assert.Equal(t, "3", *atts["lastNumber"].N)
 		// again: next id should be hasdhid(UserFile, 4) = E9
@@ -149,10 +149,10 @@ func TestIDGenerator_NextOKExistingCounter(t *testing.T) {
 		assert.Nil(t, err)
 		assert.Equal(t, "E9", nextID)
 		// check item in dynamo
-		atts = godynamodb.GetItem(t, svc, tableWithPK, map[string]string{"PK": "IDGENERATOR#UserFile"})
+		atts = godynamodb.GetItem(t, svc, tableWithPK, map[string]string{"PK": "ID_GENERATOR#UserFile"})
 		assert.NotEmpty(t, atts)
-		assert.Equal(t, "IDGENERATOR#UserFile", *atts["PK"].S)
-		assert.Equal(t, "IDGENERATOR", *atts["TYPE"].S)
+		assert.Equal(t, "ID_GENERATOR#UserFile", *atts["PK"].S)
+		assert.Equal(t, "ID_GENERATOR", *atts["TYPE"].S)
 		assert.Equal(t, "UserFile", *atts["name"].S)
 		assert.Equal(t, "4", *atts["lastNumber"].N)
 	})
@@ -166,13 +166,13 @@ func TestIDGenerator_NextOKExistingCounter(t *testing.T) {
 		assert.Equal(t, "6l", nextID)
 		// check item in dynamo
 		atts := godynamodb.GetItem(t, svc, tableWithPKSK, map[string]string{
-			"PK": "IDGENERATOR#UserFile",
-			"SK": "IDGENERATOR#UserFile",
+			"PK": "ID_GENERATOR#UserFile",
+			"SK": "ID_GENERATOR#UserFile",
 		})
 		assert.NotEmpty(t, atts)
-		assert.Equal(t, "IDGENERATOR#UserFile", *atts["PK"].S)
-		assert.Equal(t, "IDGENERATOR#UserFile", *atts["SK"].S)
-		assert.Equal(t, "IDGENERATOR", *atts["TYPE"].S)
+		assert.Equal(t, "ID_GENERATOR#UserFile", *atts["PK"].S)
+		assert.Equal(t, "ID_GENERATOR#UserFile", *atts["SK"].S)
+		assert.Equal(t, "ID_GENERATOR", *atts["TYPE"].S)
 		assert.Equal(t, "UserFile", *atts["name"].S)
 		assert.Equal(t, "3", *atts["lastNumber"].N)
 		// again: next id should be hasdhid(UserFile, 4) = E9
@@ -181,13 +181,13 @@ func TestIDGenerator_NextOKExistingCounter(t *testing.T) {
 		assert.Equal(t, "E9", nextID)
 		// check item in dynamo
 		atts = godynamodb.GetItem(t, svc, tableWithPKSK, map[string]string{
-			"PK": "IDGENERATOR#UserFile",
-			"SK": "IDGENERATOR#UserFile",
+			"PK": "ID_GENERATOR#UserFile",
+			"SK": "ID_GENERATOR#UserFile",
 		})
 		assert.NotEmpty(t, atts)
-		assert.Equal(t, "IDGENERATOR#UserFile", *atts["PK"].S)
-		assert.Equal(t, "IDGENERATOR#UserFile", *atts["SK"].S)
-		assert.Equal(t, "IDGENERATOR", *atts["TYPE"].S)
+		assert.Equal(t, "ID_GENERATOR#UserFile", *atts["PK"].S)
+		assert.Equal(t, "ID_GENERATOR#UserFile", *atts["SK"].S)
+		assert.Equal(t, "ID_GENERATOR", *atts["TYPE"].S)
 		assert.Equal(t, "UserFile", *atts["name"].S)
 		assert.Equal(t, "4", *atts["lastNumber"].N)
 	})
@@ -207,10 +207,10 @@ func TestIDGenerator_NextOKNewCounter(t *testing.T) {
 		assert.Nil(t, err)
 		assert.Equal(t, "Mp", nextID)
 		// check item in dynamo
-		atts := godynamodb.GetItem(t, svc, tableWithPK, map[string]string{"PK": "IDGENERATOR#Dataset"})
+		atts := godynamodb.GetItem(t, svc, tableWithPK, map[string]string{"PK": "ID_GENERATOR#Dataset"})
 		assert.NotEmpty(t, atts)
-		assert.Equal(t, "IDGENERATOR#Dataset", *atts["PK"].S)
-		assert.Equal(t, "IDGENERATOR", *atts["TYPE"].S)
+		assert.Equal(t, "ID_GENERATOR#Dataset", *atts["PK"].S)
+		assert.Equal(t, "ID_GENERATOR", *atts["TYPE"].S)
 		assert.Equal(t, "Dataset", *atts["name"].S)
 		assert.Equal(t, "1", *atts["lastNumber"].N)
 		// again: next id should be hasdhid(Dataset, 2) = Pk
@@ -218,10 +218,10 @@ func TestIDGenerator_NextOKNewCounter(t *testing.T) {
 		assert.Nil(t, err)
 		assert.Equal(t, "Pk", nextID)
 		// check item in dynamo
-		atts = godynamodb.GetItem(t, svc, tableWithPK, map[string]string{"PK": "IDGENERATOR#Dataset"})
+		atts = godynamodb.GetItem(t, svc, tableWithPK, map[string]string{"PK": "ID_GENERATOR#Dataset"})
 		assert.NotEmpty(t, atts)
-		assert.Equal(t, "IDGENERATOR#Dataset", *atts["PK"].S)
-		assert.Equal(t, "IDGENERATOR", *atts["TYPE"].S)
+		assert.Equal(t, "ID_GENERATOR#Dataset", *atts["PK"].S)
+		assert.Equal(t, "ID_GENERATOR", *atts["TYPE"].S)
 		assert.Equal(t, "Dataset", *atts["name"].S)
 		assert.Equal(t, "2", *atts["lastNumber"].N)
 	})
@@ -234,13 +234,13 @@ func TestIDGenerator_NextOKNewCounter(t *testing.T) {
 		assert.Equal(t, "Mp", nextID)
 		// check item in dynamo
 		atts := godynamodb.GetItem(t, svc, tableWithPKSK, map[string]string{
-			"PK": "IDGENERATOR#Dataset",
-			"SK": "IDGENERATOR#Dataset",
+			"PK": "ID_GENERATOR#Dataset",
+			"SK": "ID_GENERATOR#Dataset",
 		})
 		assert.NotEmpty(t, atts)
-		assert.Equal(t, "IDGENERATOR#Dataset", *atts["PK"].S)
-		assert.Equal(t, "IDGENERATOR#Dataset", *atts["SK"].S)
-		assert.Equal(t, "IDGENERATOR", *atts["TYPE"].S)
+		assert.Equal(t, "ID_GENERATOR#Dataset", *atts["PK"].S)
+		assert.Equal(t, "ID_GENERATOR#Dataset", *atts["SK"].S)
+		assert.Equal(t, "ID_GENERATOR", *atts["TYPE"].S)
 		assert.Equal(t, "Dataset", *atts["name"].S)
 		assert.Equal(t, "1", *atts["lastNumber"].N)
 		// again: next id should be hasdhid(Dataset, 2) = Pk
@@ -249,13 +249,13 @@ func TestIDGenerator_NextOKNewCounter(t *testing.T) {
 		assert.Equal(t, "Pk", nextID)
 		// check item in dynamo
 		atts = godynamodb.GetItem(t, svc, tableWithPKSK, map[string]string{
-			"PK": "IDGENERATOR#Dataset",
-			"SK": "IDGENERATOR#Dataset",
+			"PK": "ID_GENERATOR#Dataset",
+			"SK": "ID_GENERATOR#Dataset",
 		})
 		assert.NotEmpty(t, atts)
-		assert.Equal(t, "IDGENERATOR#Dataset", *atts["PK"].S)
-		assert.Equal(t, "IDGENERATOR#Dataset", *atts["SK"].S)
-		assert.Equal(t, "IDGENERATOR", *atts["TYPE"].S)
+		assert.Equal(t, "ID_GENERATOR#Dataset", *atts["PK"].S)
+		assert.Equal(t, "ID_GENERATOR#Dataset", *atts["SK"].S)
+		assert.Equal(t, "ID_GENERATOR", *atts["TYPE"].S)
 		assert.Equal(t, "Dataset", *atts["name"].S)
 		assert.Equal(t, "2", *atts["lastNumber"].N)
 	})

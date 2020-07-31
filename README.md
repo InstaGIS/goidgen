@@ -53,9 +53,9 @@ func main() {
 ## Dynamo table design
 
 Properties:
-* PK: partition key (in the form IDGENERATOR#{{name}}).
+* PK: partition key (in the form ID_GENERATOR#{{name}}).
 * SK: sort key, optional. If used, its value is the same as PK.
-* TYPE: entity type (fixed value: IDGENERATOR).
+* TYPE: entity type (fixed value: ID_GENERATOR).
 * name: generator name, unique (enforced by PK).
 * lastNumber: last used int to generate an id (number).
 

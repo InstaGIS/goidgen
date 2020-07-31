@@ -90,8 +90,8 @@ func createTables(svc *dynamodb.Client) error {
 	// test data
 	testItems := []map[string]dynamodb.AttributeValue{
 		{
-			"PK":         {S: aws.String("IDGENERATOR#UserFile")},
-			"TYPE":       {S: aws.String("IDGENERATOR")},
+			"PK":         {S: aws.String("ID_GENERATOR#UserFile")},
+			"TYPE":       {S: aws.String("ID_GENERATOR")},
 			"name":       {S: aws.String("UserFile")},
 			"lastNumber": {N: aws.String("2")},
 		},
