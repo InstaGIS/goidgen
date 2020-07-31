@@ -29,20 +29,21 @@ func main() {
     table := "MyServiceTable"
 
     // new Audience IDGenerator
-    idGenerator, err := goidgen.New(context.Background(), dynamoCli, table, false, "Audience")
+    ctx := context.Background()
+    idGenerator, err := goidgen.New(ctx, dynamoCli, table, false, "Audience")
     if err != nil {
         log.Fatal(err)
     }
 
     // get an ID
-    nextID, err := idGenerator.Next(context.Background())
+    nextID, err := idGenerator.Next(ctx)
     if err != nil {
         log.Fatal(err)
     }
     log.Println(nextID)
 
     // and the next one
-    nextID, err = idGenerator.Next(context.Background())
+    nextID, err = idGenerator.Next(ctx)
     if err != nil {
         log.Fatal(err)
     }
@@ -66,8 +67,8 @@ other entities in complex tables:
 * The name of the sort key is SK, and it's optional.
 * There's a TYPE property to make easier identify the type of the items (to perform migrations or any other task).
 
-There're only three access patterns:
+There are only three access patterns:
 
 * New: puts an IdGenerator item.
 * Open: gets an IdGenerator item.
-* Next: updates the lastNumber of an existing IdGenerator item, increasing its value by 1. 
+* Next: updates the lastNumber of an existing IdGenerator item, increasing its lastNumber by 1.
